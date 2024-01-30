@@ -1,0 +1,195 @@
+--Part Spawner by gggg8208
+
+local plr = game.Players.LocalPlayer
+local char = plr.CharacterAdded:Wait()
+
+local Folder = Instance.new("Folder")
+Folder.Parent = game.Workspace
+Folder.Name = "StoredParts"
+local screengui = Instance.new("ScreenGui")
+screengui.Parent = plr.PlayerGui
+screengui.Name = "gui"
+local value = Instance.new("BoolValue")
+value.Parent = screengui
+local frame = Instance.new("Frame")
+frame.Parent = screengui
+frame.Position = UDim2.new(0.293, 0,0.017, 0)
+frame.Size = UDim2.new(0, 487,0, 329)
+frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+frame.BackgroundTransparency = 0.75
+local uicorner = Instance.new("UICorner")
+uicorner.Parent = frame
+uicorner.CornerRadius = UDim.new(0,20)
+local userinput = game:GetService("UserInputService")
+userinput.InputBegan:Connect(function(input)
+	if input.KeyCode == Enum.KeyCode.B then
+		frame.Visible = not frame.Visible
+	end
+end)
+frame.Draggable = true
+--MAIN BUTTON
+
+local PartsDestroy = Instance.new("TextButton")
+PartsDestroy.Parent = frame
+PartsDestroy.Name = "(MAIN) Destroy Parts"
+PartsDestroy.Size = UDim2.new(0, 58,0, 50)
+PartsDestroy.Position = UDim2.new(0.068, 0,0.3, 0)
+PartsDestroy.Font = Enum.Font.FredokaOne
+PartsDestroy.BackgroundColor3 = Color3.fromRGB(255, 136, 0)
+PartsDestroy.Text = "Delete Parts"
+PartsDestroy.TextSize = 14
+PartsDestroy.TextColor3 = Color3.fromRGB(255, 255, 255)
+PartsDestroy.MouseButton1Click:Connect(function()
+	game.Workspace.StoredParts:Destroy()
+	wait(1)
+	local Folder = Instance.new("Folder")
+	Folder.Parent = game.Workspace
+	Folder.Name = "StoredParts"
+end)
+--MAIN BUTTON
+local Textbutton1 = Instance.new("TextButton")
+Textbutton1.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Textbutton1.Parent = frame
+Textbutton1.Position = UDim2.new(0.294, 0,0.127, 0)
+Textbutton1.Size = UDim2.new(0, 200,0, 50)
+Textbutton1.Text = "Spawn Part"
+Textbutton1.Font = Enum.Font.FredokaOne
+Textbutton1.TextColor3 = Color3.fromRGB(255, 255, 255)
+Textbutton1.TextSize = 29
+Textbutton1.MouseButton1Click:Connect(function()
+		local X = char.HumanoidRootPart.Position.X
+		local Z = char.HumanoidRootPart.Position.Z
+		local Y = char.HumanoidRootPart.Position.Y
+		local part = Instance.new("Part")
+		part.Size = Vector3.new(4,4,4)
+		part.Parent = game.Workspace.StoredParts
+		part.Name = "part"
+		part.Position = Vector3.new(X,Y,Z)
+	if value.Value == true then
+		part.Anchored = true
+	end
+	if value.Value == false then
+		part.Anchored = false
+	end
+		part.Shape = Enum.PartType.Block
+		local clickdetector = Instance.new("ClickDetector")
+		clickdetector.Name = "click"
+		clickdetector.Parent = part
+		clickdetector.MouseClick:Connect(function()
+			part:Destroy()
+		end)
+		clickdetector.MouseHoverEnter:Connect(function()
+			part.Color = Color3.fromRGB(255, 0, 0)
+		end)
+		clickdetector.MouseHoverLeave:Connect(function()
+			part.Color = Color3.fromRGB(163, 162, 165)
+		end)
+end)
+local Textbutton2 = Instance.new("TextButton")
+Textbutton2.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Textbutton2.Parent = frame
+Textbutton2.Position = UDim2.new(0.294, 0,0.303, 0)
+Textbutton2.Size = UDim2.new(0, 200,0, 50)
+Textbutton2.Text = "Spawn Ball"
+Textbutton2.Font = Enum.Font.FredokaOne
+Textbutton2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Textbutton2.TextSize = 29
+Textbutton2.MouseButton1Click:Connect(function()
+	local X = char.HumanoidRootPart.Position.X
+	local Z = char.HumanoidRootPart.Position.Z
+	local Y = char.HumanoidRootPart.Position.Y
+	local part = Instance.new("Part")
+	part.Size = Vector3.new(4,4,4)
+	part.Parent = game.Workspace.StoredParts
+	part.Name = "part"
+	part.Position = Vector3.new(X,Y,Z)
+	if value.Value == true then
+		part.Anchored = true
+	end
+	if value.Value == false then
+		part.Anchored = false
+	end
+	part.Shape = Enum.PartType.Ball
+	local clickdetector = Instance.new("ClickDetector")
+	clickdetector.Name = "click"
+	clickdetector.Parent = part
+	clickdetector.MouseClick:Connect(function()
+		part:Destroy()
+	end)
+	clickdetector.MouseHoverEnter:Connect(function()
+		part.Color = Color3.fromRGB(255, 0, 0)
+	end)
+	clickdetector.MouseHoverLeave:Connect(function()
+		part.Color = Color3.fromRGB(163, 162, 165)
+	end)
+end)
+local Textbutton3 = Instance.new("TextButton")
+Textbutton3.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+Textbutton3.Parent = frame
+Textbutton3.Position = UDim2.new(0.294, 0,0.476, 0)
+Textbutton3.Size = UDim2.new(0, 200,0, 50)
+Textbutton3.Text = "Spawn Wedge"
+Textbutton3.Font = Enum.Font.FredokaOne
+Textbutton3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Textbutton3.TextSize = 29
+Textbutton3.MouseButton1Click:Connect(function()
+	local X = char.HumanoidRootPart.Position.X
+	local Z = char.HumanoidRootPart.Position.Z
+	local Y = char.HumanoidRootPart.Position.Y
+	local part = Instance.new("Part")
+	part.Size = Vector3.new(4,4,4)
+	part.Parent = game.Workspace.StoredParts
+	part.Name = "part"
+	part.Position = Vector3.new(X,Y,Z)
+	if value.Value == true then
+		part.Anchored = true
+	end
+	if value.Value == false then
+		part.Anchored = false
+	end
+	part.Shape = Enum.PartType.Wedge
+	local clickdetector = Instance.new("ClickDetector")
+	clickdetector.Name = "click"
+	clickdetector.Parent = part
+	clickdetector.MouseClick:Connect(function()
+		part:Destroy()
+	end)
+	clickdetector.MouseHoverEnter:Connect(function()
+		part.Color = Color3.fromRGB(255, 0, 0)
+	end)
+	clickdetector.MouseHoverLeave:Connect(function()
+		part.Color = Color3.fromRGB(163, 162, 165)
+	end)
+end)
+local Anchored = Instance.new("TextButton")
+Anchored.Parent = frame
+Anchored.Name = "Anchored"
+Anchored.Text = "Anchored"
+Anchored.Font = Enum.Font.FredokaOne
+Anchored.Position = UDim2.new(0.068, 0,0.125, 0)
+Anchored.Size = UDim2.new(0, 58,0, 50)
+Anchored.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Anchored.TextSize = 14
+Anchored.MouseButton1Click:Connect(function()
+	value.Value = not value.Value
+	if value.Value == true then
+		Anchored.BackgroundColor3 = Color3.fromRGB(17, 255, 0)
+	end
+	if value.Value == false then
+		Anchored.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end
+end)
+local closeopen = Instance.new("TextButton")
+closeopen.Parent = screengui
+closeopen.Name = "Closed/Open"
+closeopen.BackgroundColor3 = Color3.fromRGB(71, 71, 71)
+closeopen.Size = UDim2.new(0, 80,0, 50)
+closeopen.Position = UDim2.new(0, 0,0.474, 0)
+closeopen.Font = Enum.Font.FredokaOne
+closeopen.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeopen.Text = "Part Spawner"
+closeopen.Draggable = true
+closeopen.TextSize = 14
+closeopen.MouseButton1Click:Connect(function()
+	frame.Visible = not frame.Visible
+end)
